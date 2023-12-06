@@ -75,18 +75,11 @@ app.post("/vehicle/add", (req, res) => {
     //}
 });
 app.get("/vehicle/search/:model", (req, res) => {
-    console.log(req.params.model);
     let found = 0;
     vehicles.forEach(vehicle => {
         if (vehicle.model == req.params.model) {
-            let foundVehicle = {
-                model: vehicle.model,
-                color: vehicle.color,
-                year: vehicle.year,
-                power: vehicle.power
-            };
             found = 1;
-            res.send(foundVehicle);
+            res.send(vehicle);
         }
         else {
             found = 0;

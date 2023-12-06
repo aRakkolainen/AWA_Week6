@@ -99,7 +99,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"nodemon ./dist/index.js\n"
+    "start": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"nodemon ./dist/index.js --ignore node_modules\""
   },
   "keywords": [],
   "author": "",

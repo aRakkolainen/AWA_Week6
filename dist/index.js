@@ -7,11 +7,12 @@ const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const port = 3000;
 let vehicles = [];
+app.use(express_1.default.json());
 app.get("/hello", (req, res) => {
     res.send("Hello world");
 });
 app.post("/vehicle/add", (req, res) => {
-    console.log(req.body.model);
+    //console.log(req.body)
     if (req.body != null) {
         let vehicle = {
             model: req.body.model,
@@ -20,11 +21,11 @@ app.post("/vehicle/add", (req, res) => {
             power: req.body.power
         };
         vehicles.push(vehicle);
-        res.sendStatus(201).send("Vehicle added");
+        res.status(201).send("Vehicle added");
     }
-    else {
-        res.sendStatus(404).send("Failed to add vehicle");
-    }
+    //} else {
+    //res.sendStatus(404).send("Failed to add vehicle");
+    //}
 });
 app.listen(port, () => {
     console.log("Server is running at port ", port);

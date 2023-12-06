@@ -10,13 +10,15 @@ type Vehicle = {
 }
 let vehicles: Vehicle[]  = [];
 
+app.use(express.json());
+
 app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello world");
 })
 
 
 app.post("/vehicle/add", (req: Request, res: Response) => {
-    console.log(req.body.model)
+    //console.log(req.body)
     if (req.body != null) {
         let vehicle : Vehicle = {
             model: req.body.model, 
@@ -25,10 +27,11 @@ app.post("/vehicle/add", (req: Request, res: Response) => {
             power: req.body.power
         }
         vehicles.push(vehicle);
-        res.sendStatus(201).send("Vehicle added")
-} else {
-    res.sendStatus(404).send("Failed to add vehicle");
-}
+        res.status(201).send("Vehicle added");
+    }
+    //} else {
+        //res.sendStatus(404).send("Failed to add vehicle");
+    //}
     
 })
 
